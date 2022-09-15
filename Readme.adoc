@@ -25,3 +25,16 @@ image::src/images/image-2022-09-15-11-42-15-747.png[]
 image::src/images/image-2022-09-15-11-48-57-749.png[width=3000]
 
 * add navigation bar (Bootstrap Navbar; copy paste the code in the body of base.html.twig)
+Now I adapt the navbar:
+** I rename the title of the navbar into Menu and instead of link, I will use Dishes
+
+image::src/images/image-2022-09-15-14-12-03-260.png[width=3000]
+
+** the target link needs to be adapted also...
+In the homeController you can find the route
+
+image::src/images/image-2022-09-15-14-14-32-813.png[width=400]
+
+image::src/images/image-2022-09-15-14-10-50-380.png[width=500]
+
+I change it to the route of the Homepage
