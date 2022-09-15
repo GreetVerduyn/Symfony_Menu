@@ -1,0 +1,27 @@
+== Make Website (Menu)
+
+* Go in the terminal to the location you want it to be stored
+
+ composer create-project symfony/skeleton Menu
+
+* Go to the file and do following commands
+
+ composer require make
+
+ composer req twig
+
+* Make first Controller
+
+ php bin/console make:controller
+ (Home Controller, route set to '/')
+
+* add Bootstrap (Google search: bootstrap cdn)
+
+image::src/images/image-2022-09-15-11-40-08-315.png[]
+image::src/images/image-2022-09-15-11-42-15-747.png[]
+
+** add the line of code to the base.html.twig (template)
+
+image::src/images/image-2022-09-15-11-48-57-749.png[width=3000]
+
+* add navigation bar (Bootstrap Navbar; copy paste the code in the body of base.html.twig)
