@@ -15,6 +15,8 @@
  php bin/console make:controller
  (Home Controller, route set to '/')
 
+* TEST SOME FUNCTIONALITIES
+
 * add Bootstrap (Google search: bootstrap cdn)
 
 image::src/images/image-2022-09-15-11-40-08-315.png[]
@@ -37,4 +39,60 @@ image::src/images/image-2022-09-15-14-14-32-813.png[width=400]
 
 image::src/images/image-2022-09-15-14-10-50-380.png[width=500]
 
-I change it to the route of the Homepage
+I change the route in the navbar into the route of the Homepage.
+To adapt the link, I use the function 'path({{ 'nameOfRoute' }})'
+
+To check how its works, I create a (temporary) second view (start) and link it in the navbar
+
+* START WITH FREE TEMPLATE
+
+Now I can get started with a free template.
+
+** I download the website, remove all images en copy all files into the public folder of this project.
+
+** I copy everything from the index.html and paste it into base.html.twig
+
+** To acces the assets (CSS and images) I have to install assets by giving the command in the terminal.
+
+ composer req asset
+
+With this package I can specify all links of pass relative to folder public.
+I adapt all the links:   <link href="{{ assets('THE LINK')}}">
+and change the pass for the JavaScript files : <script src="{{assets('PASS')}}"></script>
+
+** I add {%block body%} {%endblock%} between the header and the first section
+
+I put the code from the first part into the home-template, and I adapt the ref in the navbar.
+
+* install doctrine and set up a database
+
+ composer req doctrine
+
+ php bin/console doctrine:database:create
+
+ php bin/console make entity
+ php bin/console make:migration
+
+Then we need to check the code in the Migrationfolder and execute the command
+
+ php bin/console doctrine:migrations:migrate
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
