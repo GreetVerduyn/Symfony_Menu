@@ -78,7 +78,7 @@ Then I need to check the code in the Migrationfolder and execute the command
  php bin/console doctrine:migrations:migrate
 
 
-For maintainability and overview I create a separate controller for different pages of function or the web application.
+* For maintainability and overview I create a separate controller for different pages of function or the web application.
 
  php bin/console make:controller
 
@@ -106,6 +106,34 @@ I adapt the index function into:
 
 In the index.html.twig of the dish template, I remove everything in the block body
 and add a container with a table that includes the dishes
+
+* I ad a price to the database
+
+ php bin/console make:entity
+
+(from the existing tale dishes)
+
+ php bin/console doctrine:schema:update --force
+
+* now I create a form (name ends with 'type') and bound it to the entity 'Dishes'
+
+ composer req form
+ php bin/console make:form
+
+** I adjust the create functin in the dishController into
+
+image::src/images/image-2022-09-19-14-35-17-121.png[]
+
+** I create a new view for dish (create.html.twig)
+** add a submit button to the builder of the class DishType
+
+image::src/images/image-2022-09-19-14-42-54-675.png[]
+
+and add "form_theme: 'bootstrap_4_layout.html.twig'" into the twig.yaml, so all my form hava a bootstrap lay-out.
+
+image::src/images/image-2022-09-19-14-45-26-155.png[]
+
+
 
 
 

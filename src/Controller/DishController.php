@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Dishes;
+use App\Form\DishType;
 use App\Repository\DishesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,18 +28,20 @@ class DishController extends AbstractController
     public function create(ManagerRegistry $doctrine) : Response
     {
         $dish = new Dishes();
-        $dish ->setName('Pizza');
 
-        // EntityManager
+        //Form
+        $form = $this->createForm(DishType::class, $dish);
+
+              // EntityManager
         $em = $doctrine ->getManager();
-        $em ->persist($dish);
+        //$em ->persist($dish);
 
         //execute the queries(INERT)
-        $em ->flush();
+        //$em ->flush();
 
         //Response
-        return new Response('dish is made');
-
+        return $this->render('dish/create.html.twig', [
+            'createForm' => $form->createView()]);
     }
 
 }
