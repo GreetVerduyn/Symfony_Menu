@@ -138,6 +138,25 @@ and after creating, the overview of all dishes is showed.
 
 image::src/images/image-2022-09-19-15-24-00-147.png[width=600]
 
+*  adapt the view of the table, so you can also create and delete a dish
+ ** Create:
+
+ <th><a href="{{path ('app_dish_create')}}">Create</a></th>
+
+** Delete: therefor I first need to create a function in the controller and add a link into the view.
+
+image::src/images/image-2022-09-19-16-11-29-590.png[width=600]
+
+image::src/images/image-2022-09-19-16-12-02-418.png[width=600]
+
+*** I also add a flach message when a dish is deleted; therefor I needed to add a flach-message in the controller
+and show it in the index.html.twig
+
+image::src/images/image-2022-09-19-17-03-21-018.png[]
+
+image::src/images/image-2022-09-19-17-03-39-782.png[]
+
+
 
 
 

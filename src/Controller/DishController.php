@@ -25,7 +25,7 @@ class DishController extends AbstractController
     }
 
     #[Route('/create', name: '_create')]                             // route = /dish/create    name = app_dish_create
-    public function create(ManagerRegistry $doctrine, Request $request) : Response
+    public function create(ManagerRegistry $doctrine, Request $request): Response
     {
         $dish = new Dishes();
 
@@ -33,13 +33,13 @@ class DishController extends AbstractController
         $form = $this->createForm(DishType::class, $dish);
         $form->handleRequest($request);
 
-        if ($form ->isSubmitted()){
+        if ($form->isSubmitted()) {
             // EntityManager
-            $em = $doctrine ->getManager();
-            $em ->persist($dish);
+            $em = $doctrine->getManager();
+            $em->persist($dish);
 
-            //execute the queries(INERT)
-            $em ->flush();
+            //execute the queries(INSERT)
+            $em->flush();
             return $this->redirect($this->generateUrl('app_dish_edit'));
 
         }
@@ -49,4 +49,22 @@ class DishController extends AbstractController
             'createForm' => $form->createView()]);
     }
 
+    #[Route('/delete/{id}', name: '_delete')]                       // route = /dish/delete    name = app_dish_delete
+    public function delete(ManagerRegistry $doctrine, $id, DishesRepository $dr)
+    {
+        // EntityManager
+        $em = $doctrine->getManager();
+        $dish = $dr->find($id);
+        $em->remove($dish);
+
+        //execute the queries(DELETE)
+        $em->flush();
+
+        //message
+        $this->addFlash('deleted', 'Dish is removed');
+
+        return $this->redirect($this->generateUrl('app_dish_edit'));
+
+
+    }
 }
