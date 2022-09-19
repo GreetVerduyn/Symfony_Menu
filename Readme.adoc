@@ -73,14 +73,21 @@ I put the code from the first part into the home-template, and I adapt the ref i
  php bin/console make entity
  php bin/console make:migration
 
-Then we need to check the code in the Migrationfolder and execute the command
+Then I need to check the code in the Migrationfolder and execute the command
 
  php bin/console doctrine:migrations:migrate
 
 
+For maintainability and overview I create a separate controller for different pages of function or the web application.
 
+ php bin/console make:controller
 
+I call it DishController and create a function 'create'.
+This function needs a Request
 
+image::src/images/image-2022-09-19-10-05-26-152.png[width=400]
+
+To save the new dishes in the database, I need an Entity manager
 
 
 
