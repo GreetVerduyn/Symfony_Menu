@@ -25,19 +25,24 @@ class DishController extends AbstractController
     }
 
     #[Route('/create', name: '_create')]                             // route = /dish/create    name = app_dish_create
-    public function create(ManagerRegistry $doctrine) : Response
+    public function create(ManagerRegistry $doctrine, Request $request) : Response
     {
         $dish = new Dishes();
 
         //Form
         $form = $this->createForm(DishType::class, $dish);
+        $form->handleRequest($request);
 
-              // EntityManager
-        $em = $doctrine ->getManager();
-        //$em ->persist($dish);
+        if ($form ->isSubmitted()){
+            // EntityManager
+            $em = $doctrine ->getManager();
+            $em ->persist($dish);
 
-        //execute the queries(INERT)
-        //$em ->flush();
+            //execute the queries(INERT)
+            $em ->flush();
+            return $this->redirect($this->generateUrl('app_dish_edit'));
+
+        }
 
         //Response
         return $this->render('dish/create.html.twig', [

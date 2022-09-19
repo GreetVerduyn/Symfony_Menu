@@ -13,6 +13,7 @@
             <th>Order Nr.</th>
             <th>Name</th>
             <th>Description</th>
+            <th>Price</th>
         </tr>
         </thead>
         <tbody>
@@ -21,6 +22,8 @@
                 <td>{{ dish.id }}</td>
                 <td>{{ dish.name }}</td>
                 <td>{{ dish.description }}</td>
+                <td>{{ dish.price }}</td>
+
             </tr>
         {% endfor %}
         </tbody>

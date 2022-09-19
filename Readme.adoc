@@ -133,7 +133,10 @@ and add "form_theme: 'bootstrap_4_layout.html.twig'" into the twig.yaml, so all 
 
 image::src/images/image-2022-09-19-14-45-26-155.png[]
 
+** in the controller I adjust the 'create function' so the data, created with the form, can be saved into the database
+and after creating, the overview of all dishes is showed.
 
+image::src/images/image-2022-09-19-15-24-00-147.png[width=600]
 
 
 
