@@ -2,33 +2,42 @@
 
 namespace App\Controller;
 
-use App\Entity\Dish;use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Dishes;
+use App\Repository\DishesRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Persistence\ManagerRegistry;
 
 
 #[Route('/dish', name: 'app_dish')]
 class DishController extends AbstractController
 {
-    #[Route('/', name: 'app_edit')]                                   // route = /dish/
-    public function index(): Response
+    #[Route('/', name: '_edit')]                                   // route = /dish/     name= app_dish_edit
+    public function index(DishesRepository $dr): Response
     {
+        $dishes = $dr->findAll();
         return $this->render('dish/index.html.twig', [
-            'controller_name' => 'DishController',
+            'dishes' => $dishes,
         ]);
     }
 
-    #[Route('/create', name: 'app_create')]                             // route = /gitdish/create
-    public function create(Request $request)
+    #[Route('/create', name: '_create')]                             // route = /dish/create    name = app_dish_create
+    public function create(ManagerRegistry $doctrine) : Response
     {
-        $dish = new Dish();
+        $dish = new Dishes();
         $dish ->setName('Pizza');
 
         // EntityManager
-        $em = $this ->getDoctrine() ->getManager();
+        $em = $doctrine ->getManager();
         $em ->persist($dish);
+
+        //execute the queries(INERT)
         $em ->flush();
+
+        //Response
+        return new Response('dish is made');
 
     }
 

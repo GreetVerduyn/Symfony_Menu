@@ -83,15 +83,29 @@ For maintainability and overview I create a separate controller for different pa
  php bin/console make:controller
 
 I call it DishController and create a function 'create'.
-This function needs a Request
-
-image::src/images/image-2022-09-19-10-05-26-152.png[width=400]
-
+This function needs to use ManagerRegistry
 To save the new dishes in the database, I need an Entity manager
 
+image::src/images/image-2022-09-19-11-05-42-563.png[]
 
+ use Doctrine\Persistence\ManagerRegistry;      !!!!
 
+In the repository I can create queries to the entity (a few are automatically created)
+This queries I can call in the controller
 
+I adapt the index function into:
+
+ #[Route('/', name: '_edit')]                                   // route = /dish/     name= app_dish_edit
+ public function index(DishesRepository $dr): Response
+ {
+ $dishes = $dr->findAll();
+ return $this->render('dish/index.html.twig', [
+ 'dish' => '$dishes',
+ ]);
+ }
+
+In the index.html.twig of the dish template, I remove everything in the block body
+and add a container with a table that includes the dishes
 
 
 

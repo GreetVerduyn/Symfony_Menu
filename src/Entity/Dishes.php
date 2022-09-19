@@ -6,7 +6,7 @@ use App\Repository\DishesRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: DishesRepository::class)]
-class Dish
+class Dishes
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
