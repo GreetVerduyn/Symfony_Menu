@@ -157,9 +157,46 @@ image::src/images/image-2022-09-19-17-03-21-018.png[]
 image::src/images/image-2022-09-19-17-03-39-782.png[]
 
 
+* to show the dishes,
+** I download some images
+
+** add a variable $image to the entity and create a setter and a getter:
+
+** in the form I need to add a field that allows to select and upload images
+
+** adapt the database:
+
+*** In controller:
+**** adapt the create function, using the 'md5(uniqid()-function', to create a unique name for each picture)
+**** store the uploaded images into src/images/dishes, by "move"
+**** and sent it to the database
+
+*** in Service.yaml, I add
+
+ parameters:
+ images_folder: '%kernel.project_dir%/public/images/dishes'
+
+*** in the terminal. I update the database :
+
+ composer require symfony/mime
+ php bin/console doctrine:schema:update --force
 
 
+Entity
 
+image::src/images/image-2022-09-20-11-03-45-538.png[]
+
+image::src/images/image-2022-09-20-11-24-36-737.png[]
+
+image::src/images/image-2022-09-20-11-25-57-323.png[]
+
+Form
+
+image::src/images/image-2022-09-20-11-39-11-355.png[]
+
+Controller
+
+image::src/images/image-2022-09-20-14-29-29-181.png[]
 
 
 

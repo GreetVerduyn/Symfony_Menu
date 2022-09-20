@@ -36,6 +36,18 @@ class DishController extends AbstractController
         if ($form->isSubmitted()) {
             // EntityManager
             $em = $doctrine->getManager();
+            $image = $form->get('image')->getData();
+
+            if ($image) {
+                $filename = md5(uniqid()) . '.' . $image->guessClientExtension();
+            }
+
+            $image->move(
+                $this->getParameter('images_folder'),
+                $filename
+            );
+
+            $dish ->setImage($filename);
             $em->persist($dish);
 
             //execute the queries(INSERT)
