@@ -28,7 +28,7 @@
             {% for dish in dishes %}
                 <tr>
                     <td>{{ dish.id }}</td>
-                    <td>{{ dish.name }}</td>
+                    <th><a href="{{ path ('app_dish_show', {id: dish.id}) }}">{{dish.name}}</a></th>
                     <td>{{ dish.description }}</td>
                     <td>{{ dish.price }}</td>
                     <th><a href="{{ path ('app_dish_delete', {id: dish.id}) }}">x</a></th>

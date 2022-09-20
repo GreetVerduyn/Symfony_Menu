@@ -157,7 +157,7 @@ image::src/images/image-2022-09-19-17-03-21-018.png[]
 image::src/images/image-2022-09-19-17-03-39-782.png[]
 
 
-* to show the dishes,
+* add pictures to the dishes,
 ** I download some images
 
 ** add a variable $image to the entity and create a setter and a getter:
@@ -199,8 +199,15 @@ Controller
 image::src/images/image-2022-09-20-14-29-29-181.png[]
 
 
+* show the pictures of the dishes
 
+** make a 'show-function' in the controller
+** in the template (index.html.twig) I change the 'name' into a link o the picture.
+As return, I render a new template (show)
+** I create a new template for Dish and in the terminal, I add: "_composer req annotations_"
 
+template:
+image::src/images/image-2022-09-20-16-47-16-930.png[]
 
 
 

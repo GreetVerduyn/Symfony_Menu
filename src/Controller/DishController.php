@@ -47,19 +47,19 @@ class DishController extends AbstractController
                 $filename
             );
 
-            $dish ->setImage($filename);
+            $dish->setImage($filename);
             $em->persist($dish);
 
             //execute the queries(INSERT)
             $em->flush();
             return $this->redirect($this->generateUrl('app_dish_edit'));
-
         }
 
         //Response
         return $this->render('dish/create.html.twig', [
             'createForm' => $form->createView()]);
     }
+
 
     #[Route('/delete/{id}', name: '_delete')]                       // route = /dish/delete    name = app_dish_delete
     public function delete(ManagerRegistry $doctrine, $id, DishesRepository $dr)
@@ -76,7 +76,17 @@ class DishController extends AbstractController
         $this->addFlash('deleted', 'Dish is removed');
 
         return $this->redirect($this->generateUrl('app_dish_edit'));
+    }
 
+    #[Route('/show/{id}', name: '_show')]                  // route = /dish/show    name = app_dish_show
+    public function show(Dishes $dish)
+    {
+
+        dump ($dish);
+       return $this->render('dish/show.html.twig', [
+           'dish' => $dish
+      ]);
 
     }
+
 }
