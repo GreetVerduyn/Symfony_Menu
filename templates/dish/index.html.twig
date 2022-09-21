@@ -19,6 +19,7 @@
                 <th>Order Nr.</th>
                 <th>Name</th>
                 <th>Description</th>
+                <th>Category</th>
                 <th>Price</th>
                 <th>Delete</th>
                 <th><a href="{{ path ('app_dish_create') }}">Create</a></th>
@@ -30,6 +31,7 @@
                     <td>{{ dish.id }}</td>
                     <th><a href="{{ path ('app_dish_show', {id: dish.id}) }}">{{dish.name}}</a></th>
                     <td>{{ dish.description }}</td>
+                    <td>{{ dish.category }}</td>
                     <td>{{ dish.price }}</td>
                     <th><a href="{{ path ('app_dish_delete', {id: dish.id}) }}">x</a></th>
                     <td></td>

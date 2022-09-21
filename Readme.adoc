@@ -15,7 +15,7 @@
  php bin/console make:controller
  (Home Controller, route set to '/')
 
-* TEST SOME FUNCTIONALITIES
+## TEST SOME FUNCTIONALITIES
 
 * add Bootstrap (Google search: bootstrap cdn)
 
@@ -44,15 +44,15 @@ To adapt the link, I use the function 'path({{ 'nameOfRoute' }})'
 
 To check how its works, I create a (temporary) second view (start) and link it in the navbar
 
-* START WITH FREE TEMPLATE
+## START WITH FREE TEMPLATE
 
 Now I can get started with a free template.
 
-** I download the website, remove all images en copy all files into the public folder of this project.
+* I download the website, remove all images en copy all files into the public folder of this project.
 
-** I copy everything from the index.html and paste it into base.html.twig
+* I copy everything from the index.html and paste it into base.html.twig
 
-** To acces the assets (CSS and images) I have to install assets by giving the command in the terminal.
+* To acces the assets (CSS and images) I have to install assets by giving the command in the terminal.
 
  composer req asset
 
@@ -64,7 +64,7 @@ and change the pass for the JavaScript files : <script src="{{assets('PASS')}}">
 
 I put the code from the first part into the home-template, and I adapt the ref in the navbar.
 
-* install doctrine and set up a database
+## install doctrine and set up a database
 
  composer req doctrine
 
@@ -78,7 +78,7 @@ Then I need to check the code in the Migrationfolder and execute the command
  php bin/console doctrine:migrations:migrate
 
 
-* For maintainability and overview I create a separate controller for different pages of function or the web application.
+## For maintainability and overview I create a separate controller for different pages of function or the web application.
 
  php bin/console make:controller
 
@@ -107,49 +107,49 @@ I adapt the index function into:
 In the index.html.twig of the dish template, I remove everything in the block body
 and add a container with a table that includes the dishes
 
-* I ad a price to the database
+## I ad a price to the database
 
  php bin/console make:entity
 
-(from the existing tale dishes)
+(from the existing table dishes)
 
  php bin/console doctrine:schema:update --force
 
-* now I create a form (name ends with 'type') and bound it to the entity 'Dishes'
+## create a form (name ends with 'type') and bound it to the entity 'Dishes'
 
  composer req form
  php bin/console make:form
 
-** I adjust the create functin in the dishController into
+* I adjust the create function in the dishController into
 
 image::src/images/image-2022-09-19-14-35-17-121.png[]
 
-** I create a new view for dish (create.html.twig)
-** add a submit button to the builder of the class DishType
+* I create a new view for dish (create.html.twig)
+* add a submit button to the builder of the class DishType
 
 image::src/images/image-2022-09-19-14-42-54-675.png[]
 
-and add "form_theme: 'bootstrap_4_layout.html.twig'" into the twig.yaml, so all my form hava a bootstrap lay-out.
+and add "form_theme: 'bootstrap_4_layout.html.twig'" into the twig.yaml, so all my form have a bootstrap lay-out.
 
 image::src/images/image-2022-09-19-14-45-26-155.png[]
 
-** in the controller I adjust the 'create function' so the data, created with the form, can be saved into the database
+* in the controller I adjust the 'create function' so the data, created with the form, can be saved into the database
 and after creating, the overview of all dishes is showed.
 
 image::src/images/image-2022-09-19-15-24-00-147.png[width=600]
 
-*  adapt the view of the table, so you can also create and delete a dish
- ** Create:
+##  adapt the view of the table, so you can also create and delete a dish
+ * Create:
 
  <th><a href="{{path ('app_dish_create')}}">Create</a></th>
 
-** Delete: therefor I first need to create a function in the controller and add a link into the view.
+* Delete: therefor I first need to create a function in the controller and add a link into the view.
 
 image::src/images/image-2022-09-19-16-11-29-590.png[width=600]
 
 image::src/images/image-2022-09-19-16-12-02-418.png[width=600]
 
-*** I also add a flach message when a dish is deleted; therefor I needed to add a flach-message in the controller
+** I also add a flach message when a dish is deleted; therefor I needed to add a flach-message in the controller
 and show it in the index.html.twig
 
 image::src/images/image-2022-09-19-17-03-21-018.png[]
@@ -157,26 +157,23 @@ image::src/images/image-2022-09-19-17-03-21-018.png[]
 image::src/images/image-2022-09-19-17-03-39-782.png[]
 
 
-* add pictures to the dishes,
-** I download some images
+## add pictures to the dishes,
+* I download some images
+* add a variable $image to the entity and create a setter and a getter:
+* in the form I need to add a field that allows to select and upload images
+* adapt the database:
 
-** add a variable $image to the entity and create a setter and a getter:
+** In controller:
+*** adapt the create function, using the 'md5(uniqid()-function', to create a unique name for each picture)
+*** store the uploaded images into src/images/dishes, by "move"
+*** and sent it to the database
 
-** in the form I need to add a field that allows to select and upload images
-
-** adapt the database:
-
-*** In controller:
-**** adapt the create function, using the 'md5(uniqid()-function', to create a unique name for each picture)
-**** store the uploaded images into src/images/dishes, by "move"
-**** and sent it to the database
-
-*** in Service.yaml, I add
+** in Service.yaml, I add
 
  parameters:
  images_folder: '%kernel.project_dir%/public/images/dishes'
 
-*** in the terminal. I update the database :
+** in the terminal. I update the database :
 
  composer require symfony/mime
  php bin/console doctrine:schema:update --force
@@ -199,7 +196,7 @@ Controller
 image::src/images/image-2022-09-20-14-29-29-181.png[]
 
 
-* show the pictures of the dishes
+## show the pictures of the dishes
 
 ** make a 'show-function' in the controller
 ** in the template (index.html.twig) I change the 'name' into a link o the picture.
@@ -209,5 +206,41 @@ As return, I render a new template (show)
 template:
 image::src/images/image-2022-09-20-16-47-16-930.png[]
 
+## Divide the dishes into different categories
+
+* I have to create more entities...
+
+ php bin/console make:entity
+
+* and relate the entities (by Doctrine)
+** in the dish entity I create a new property (category)
+
+ #[ORM\ManyToOne(targetEntity: "App\Entity\Category", inversedBy: "Dishes")]
+    private ?string $category = null;
 
 
+** and in the category entity I also create a new property (dishes)
+
+   #[ORM\OneToMany(mappedBy: "Category", targetEntity: "App\Entity\Dishes")]
+  private ?iterable $dishes = null;
+
+** in the terminal I make a command to create the 'getters' and 'setters'
+
+ php bin/console make:entity --regenerate
+
+** in the entity 'Category I create a function
+
+  public function __toString()
+    {
+        return $this ->name;
+    }
+
+** the Form needs to be completed
+
+ ->add('category',EntityType::class, [
+ 'class' =>Category::class
+ ] )
+
+** database needs to be updated (terminal)
+
+ php bin/console doctrine:schema:update --force
