@@ -1,4 +1,4 @@
-== Make Website (Menu)
+= Make Website (Menu)
 
 * Go in the terminal to the location you want it to be stored
 
@@ -15,7 +15,7 @@
  php bin/console make:controller
  (Home Controller, route set to '/')
 
-## TEST SOME FUNCTIONALITIES
+== TEST SOME FUNCTIONALITIES
 
 * add Bootstrap (Google search: bootstrap cdn)
 
@@ -44,7 +44,7 @@ To adapt the link, I use the function 'path({{ 'nameOfRoute' }})'
 
 To check how its works, I create a (temporary) second view (start) and link it in the navbar
 
-## START WITH FREE TEMPLATE
+== START WITH FREE TEMPLATE
 
 Now I can get started with a free template.
 
@@ -64,7 +64,7 @@ and change the pass for the JavaScript files : <script src="{{assets('PASS')}}">
 
 I put the code from the first part into the home-template, and I adapt the ref in the navbar.
 
-## install doctrine and set up a database
+=== install doctrine and set up a database
 
  composer req doctrine
 
@@ -78,7 +78,7 @@ Then I need to check the code in the Migrationfolder and execute the command
  php bin/console doctrine:migrations:migrate
 
 
-## For maintainability and overview I create a separate controller for different pages of function or the web application.
+=== For maintainability and overview I create a separate controller for different pages of function or the web application.
 
  php bin/console make:controller
 
@@ -107,7 +107,7 @@ I adapt the index function into:
 In the index.html.twig of the dish template, I remove everything in the block body
 and add a container with a table that includes the dishes
 
-## I ad a price to the database
+=== I ad a price to the database
 
  php bin/console make:entity
 
@@ -115,7 +115,7 @@ and add a container with a table that includes the dishes
 
  php bin/console doctrine:schema:update --force
 
-## create a form (name ends with 'type') and bound it to the entity 'Dishes'
+=== create a form (name ends with 'type') and bound it to the entity 'Dishes'
 
  composer req form
  php bin/console make:form
@@ -138,8 +138,8 @@ and after creating, the overview of all dishes is showed.
 
 image::src/images/image-2022-09-19-15-24-00-147.png[width=600]
 
-##  adapt the view of the table, so you can also create and delete a dish
- * Create:
+===  adapt the view of the table, so you can also create and delete a dish
+* Create:
 
  <th><a href="{{path ('app_dish_create')}}">Create</a></th>
 
@@ -157,7 +157,7 @@ image::src/images/image-2022-09-19-17-03-21-018.png[]
 image::src/images/image-2022-09-19-17-03-39-782.png[]
 
 
-## add pictures to the dishes,
+=== add pictures to the dishes,
 * I download some images
 * add a variable $image to the entity and create a setter and a getter:
 * in the form I need to add a field that allows to select and upload images
@@ -196,7 +196,7 @@ Controller
 image::src/images/image-2022-09-20-14-29-29-181.png[]
 
 
-## show the pictures of the dishes
+=== show the pictures of the dishes
 
 ** make a 'show-function' in the controller
 ** in the template (index.html.twig) I change the 'name' into a link o the picture.
@@ -206,7 +206,7 @@ As return, I render a new template (show)
 template:
 image::src/images/image-2022-09-20-16-47-16-930.png[]
 
-## Divide the dishes into different categories
+=== Divide the dishes into different categories
 
 * I have to create more entities...
 
@@ -244,3 +244,30 @@ image::src/images/image-2022-09-20-16-47-16-930.png[]
 ** database needs to be updated (terminal)
 
  php bin/console doctrine:schema:update --force
+
+
+== SECURITY AND AUTHENTICATION
+
+for security, I need a registration form and a login page
+
+* I first require security ('composer require security')
+
+* then I have to make u user entity: 'php bin/console make:user', witch provides security
+
+** in the security.yaml file, the security part is created bij composer
+encoders, providers, acces controle
+
+** The entity User is created (id, username, roles and password)
+
+(more info you can find in symfony.com/doc/current/security)
+
+* for authentication, I can use the command: php bin/console make:auth
+
+I choose for a login form authenticator, and call the class of the authenticator ' Custom '
+
+In the CustomAuthenticator.php, I can decide which page is showed after login
+
+The security Controller has a function 'login' and a function 'logout'
+
+Composer also created new queries for the database.
+I use 'php bin/console doctrine:schema:update --force ' to update the database

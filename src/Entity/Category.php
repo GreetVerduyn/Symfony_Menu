@@ -18,7 +18,7 @@ class Category
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\OneToMany(mappedBy: "Category", targetEntity: "App\Entity\Dishes")]
+    #[ORM\OneToMany(mappedBy: "category", targetEntity: "App\Entity\Dishes")]
     private ?iterable $dishes;
 
     public function __construct()

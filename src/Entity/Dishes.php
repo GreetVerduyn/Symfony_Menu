@@ -25,8 +25,8 @@ class Dishes
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
-    #[ORM\ManyToOne(targetEntity: "App\Entity\Category", inversedBy: "Dishes")]
-    private ?string $category = null;
+    #[ORM\ManyToOne(targetEntity: "App\Entity\Category", inversedBy: "dishes")]
+    private ?Category $category = null;
 
     public function getId(): ?int
     {
