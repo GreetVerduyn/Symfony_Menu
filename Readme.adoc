@@ -271,3 +271,5 @@ The security Controller has a function 'login' and a function 'logout'
 
 Composer also created new queries for the database.
 I use 'php bin/console doctrine:schema:update --force ' to update the database
+
+* I make a new controller (php bin/console make:controller RegisterController), where I add a directly add a form with a 'formBuilder'
