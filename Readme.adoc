@@ -266,6 +266,7 @@ encoders, providers, acces controle
 I choose for a login form authenticator, and call the class of the authenticator ' Custom '
 
 In the CustomAuthenticator.php, I can decide which page is showed after login
+I choose the employees are sent to the edith page (overview of dishes)
 
 The security Controller has a function 'login' and a function 'logout'
 
