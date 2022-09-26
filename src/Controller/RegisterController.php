@@ -24,7 +24,7 @@ class RegisterController extends AbstractController
 
         $regform = $this->createFormBuilder()
             ->add('username', TextType::class, [
-                'label' => 'Employee'])
+                'label' => 'User'])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'required' => true,

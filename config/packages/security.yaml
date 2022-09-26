@@ -31,7 +31,9 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/app_login, roles: PUBLIC_ACCES }
+        - { path: ^/app_dish, roles: ROLE_ADMIN }
+        - { path: ^/app_register, roles: PUBLIX_ACCES }
         # - { path: ^/profile, roles: ROLE_USER }   *
         # * I YOU ONLY WANT ALL PAGES TO BE SEEN BY USERS WHO ARE LOGGED IN, YOU HAVE TO ADAPT THIS INTO
          # - { path: ^/, roles: ROLE_USER } AND UNCOMMENT THE LINE

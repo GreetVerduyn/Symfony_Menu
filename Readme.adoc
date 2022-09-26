@@ -274,3 +274,17 @@ Composer also created new queries for the database.
 I use 'php bin/console doctrine:schema:update --force ' to update the database
 
 * I make a new controller (php bin/console make:controller RegisterController), where I add a directly add a form with a 'formBuilder'
+
+
+== ACCES RESTRICTION
+in security.yaml, acces_control
+
+ { path: ^/login, roles: PUBLIC_ACCES }
+
+ { path: ^/dish, roles: ROLE_ADMIN }
+
+
+To only show the 'employee' button in the navbar when an employee is logged in,
+I add "  {% if is granted('ROLE_ADMIN') %} " and in the table, I add " ["ROLE_ADMIN"] " to the roles of the chef
+
+I also adapt the view. you see login when nog logged in, and logout when you do are logged id

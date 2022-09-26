@@ -48,8 +48,8 @@ class CustomAuthenticator extends AbstractLoginFormAuthenticator
 
         // For example:
         // return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        return new RedirectResponse($this->urlGenerator->generate('app_dish_edit'));
-        
+        return new RedirectResponse($this->urlGenerator->generate('app_home'));
+
     }
 
     protected function getLoginUrl(Request $request): string
