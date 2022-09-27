@@ -10,29 +10,93 @@
                 <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
                     consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia
                     fugiat sit in iste officiis commodi quidem hic quas.</p>
-                <ul>
-                    <li class="title " data-filter=".appetizer"><h4>Appetizer</h4></li>
-                    <li class="title " data-filter=".main_dish"><h4>Main dish</h4></li>
-                    <li class="title " data-filter=".dessert"><h4>Dessert</h4></li>
-                    <li class="title " data-filter=".drinks"><h4>Drinks</h4></li>
-                    <li class="title " data-filter="all"><h4>All dishes</h4></li>
-                </ul>
+{#                <ul>#}
+{#                    <li class="title " data-filter=".appetizer"><h4>Appetizer</h4></li>#}
+{#                    <li class="title " data-filter=".main_dish"><h4>Main dish</h4></li>#}
+{#                    <li class="title " data-filter=".dessert"><h4>Dessert</h4></li>#}
+{#                    <li class="title " data-filter=".drinks"><h4>Drinks</h4></li>#}
+{#                    <li class="title " data-filter="all"><h4>All dishes</h4></li>#}
+{#                </ul>#}
             </div>
 
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto" href="#about"></a></li>
+                    <li><a class="nav-link scrollto" href="{{ path('app_menu') }}">Menu Cart</a></li>
+                    <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
+                    <li><a class="nav-link scrollto" href="#team">Team</a></li>
+                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+
+
+            </nav><!-- .navbar -->
+            <section id="apetizer" class="appetizer">
+            <div class="row">
+                <!-- ======= Appetizer Section ======= -->
+
+                    {% for dish in dishes %}
+                    {% if dish.category.id is same as(3) %}
+                        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                            <div class="icon" {{ dish.category }}></div>
+                            <h4 class="title"><a href="">{{ dish.name }}  - € {{ dish.price }}</a></h4>
+                            <img src="{{ asset('images/' ~ dish.image) }}" alt="{{ dish.name }}">
+                            <p>OrderNr. {{ dish.id }}</p>
+                            <h5 class="description">{{ dish.description }} </h5>
+                        </div>
+                    {% endif%}
+                    {% endfor %}
+
+            </div>
+            </section><!-- End About Section -->
+            <div class="row">
+                <!-- ======= Appetizer Section ======= -->
+                <section id="portfolio" class="">
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                    {% for dish in dishes %}
+                    {% if dish.category.id is same as(3) %}
+                    {# <div class="icon-box" data-aos="fade-up"> #}
+                    <div class="icon" {{ dish.category }}"
+                </div>
+                <h4 class="title"><a href="">{{ dish.name }}  - € {{ dish.price }}</a></h4>
+                <img src="{{ asset('images/' ~ dish.image) }}" alt="{{ dish.name }}">
+                <p>OrderNr. {{ dish.id }}</p>
+                <h5 class="description">{{ dish.description }} </h5>
+                {% endif%}
+                {% endfor %}
+            </div>
             <div class="row">
                 <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                     {% for dish in dishes %}
-{#                    <div class="icon-box" data-aos="fade-up">#}
-                        <div class="icon" {{dish.category}}"</div>
-                        <h4 class="title"><a href="">{{dish.name}}</a></h4>
-                        <img src="{{asset('images/' ~ dish.image)}}" alt="{{ dish.name}}">
-                        <h5 class="description">{{dish.description}}   -  € {{ dish.price}}</h5>
-                        <p>OrderNr. {{dish.id}}</p>
-                    </div>
-                    {% endfor%}
+                    {% if dish.category.id is same as(3) %}
+                    {# <div class="icon-box" data-aos="fade-up"> #}
+                    <div class="icon" {{ dish.category }}"
                 </div>
-
+                <h4 class="title"><a href="">{{ dish.name }}  - € {{ dish.price }}</a></h4>
+                <img src="{{ asset('images/' ~ dish.image) }}" alt="{{ dish.name }}">
+                <p>OrderNr. {{ dish.id }}</p>
+                <h5 class="description">{{ dish.description }} </h5>
+                {% endif%}
+                {% endfor %}
             </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                    {% for dish in dishes %}
+                    {% if dish.category.id is same as(3) %}
+                    {# <div class="icon-box" data-aos="fade-up"> #}
+                    <div class="icon" {{ dish.category }}"
+                </div>
+                <h4 class="title"><a href="">{{ dish.name }}  - € {{ dish.price }}</a></h4>
+                <img src="{{ asset('images/' ~ dish.image) }}" alt="{{ dish.name }}">
+                <p>OrderNr. {{ dish.id }}</p>
+                <h5 class="description">{{ dish.description }} </h5>
+                {% endif%}
+                {% endfor %}
+            </div>
+
+        </div>
+
+        </div>
 
         </div>
     </section><!-- End Services Section -->
