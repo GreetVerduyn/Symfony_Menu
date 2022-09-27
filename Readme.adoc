@@ -288,3 +288,13 @@ To only show the 'employee' button in the navbar when an employee is logged in,
 I add "  {% if is granted('ROLE_ADMIN') %} " and in the table, I add " ["ROLE_ADMIN"] " to the roles of the chef
 
 I also adapt the view. you see login when nog logged in, and logout when you do are logged id
+
+== AD MENU CART FOR VISITORS
+
+ bin/console make:controller MenuController
+
+* adapt the route and te puvlic function
+
+* make the index.html.twig file:
+make o for-loop so every dish is showed
+

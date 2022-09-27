@@ -31,6 +31,10 @@ h5,
 h6 {
   font-family: "Raleway", sans-serif;
 }
+ul {
+  list-style: none;
+}
+
 
 #main {
   margin-top: 100px;
@@ -618,7 +622,7 @@ section {
 /*--------------------------------------------------------------
 # Services
 --------------------------------------------------------------*/
-.services .icon-box {
+.menu .icon-box {
   padding: 30px;
   position: relative;
   overflow: hidden;
@@ -629,7 +633,7 @@ section {
   z-index: 1;
 }
 
-.services .icon-box::before {
+.menu .icon-box::before {
   content: "";
   position: absolute;
   background: white;
@@ -641,45 +645,45 @@ section {
   z-index: -1;
 }
 
-.services .icon-box:hover::before {
+.menu .icon-box:hover::before {
   background: #67b0d1;
   top: 0;
   border-radius: 0px;
 }
 
-.services .icon {
+.menu .icon {
   margin-bottom: 15px;
 }
 
-.services .icon i {
+.menu .icon i {
   font-size: 48px;
   line-height: 1;
   color: #67b0d1;
   transition: all 0.3s ease-in-out;
 }
 
-.services .title {
+.menu .title {
   font-weight: 700;
   margin-bottom: 15px;
   font-size: 18px;
 }
 
-.services .title a {
+.menu .title a {
   color: #111;
 }
 
-.services .description {
+.menu .description {
   font-size: 15px;
   line-height: 28px;
   margin-bottom: 0;
 }
 
-.services .icon-box:hover .title a,
-.services .icon-box:hover .description {
+.menu .icon-box:hover .title a,
+.menu .icon-box:hover .description {
   color: #fff;
 }
 
-.services .icon-box:hover .icon i {
+.menu .icon-box:hover .icon i {
   color: #fff;
 }
 

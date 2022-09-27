@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <!-- ======= Menu Section ======= -->
+    <section id="menu" class="menu">
+        <div class="container">
+
+            <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+                <h2>Menu Cart</h2>
+                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+                    consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia
+                    fugiat sit in iste officiis commodi quidem hic quas.</p>
+                <ul>
+                    <li class="title " data-filter=".appetizer"><h4>Appetizer</h4></li>
+                    <li class="title " data-filter=".main_dish"><h4>Main dish</h4></li>
+                    <li class="title " data-filter=".dessert"><h4>Dessert</h4></li>
+                    <li class="title " data-filter=".drinks"><h4>Drinks</h4></li>
+                    <li class="title " data-filter="all"><h4>All dishes</h4></li>
+                </ul>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                    {% for dish in dishes %}
+{#                    <div class="icon-box" data-aos="fade-up">#}
+                        <div class="icon" {{dish.category}}"</div>
+                        <h4 class="title"><a href="">{{dish.name}}</a></h4>
+                        <img src="{{asset('images/' ~ dish.image)}}" alt="{{ dish.name}}">
+                        <h5 class="description">{{dish.description}}   -  € {{ dish.price}}</h5>
+                        <p>OrderNr. {{dish.id}}</p>
+                    </div>
+                    {% endfor%}
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Services Section -->
+{% endblock %}
