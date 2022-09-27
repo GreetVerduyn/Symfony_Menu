@@ -1,103 +1,126 @@
 {% extends 'base.html.twig' %}
+{% block header_parent %}{% endblock %}
 
 {% block body %}
-    <!-- ======= Menu Section ======= -->
-    <section id="menu" class="menu">
-        <div class="container">
-
-            <div class="section-title" data-aos="fade-in" data-aos-delay="100">
-                <h2>Menu Cart</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-                    consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia
-                    fugiat sit in iste officiis commodi quidem hic quas.</p>
-{#                <ul>#}
-{#                    <li class="title " data-filter=".appetizer"><h4>Appetizer</h4></li>#}
-{#                    <li class="title " data-filter=".main_dish"><h4>Main dish</h4></li>#}
-{#                    <li class="title " data-filter=".dessert"><h4>Dessert</h4></li>#}
-{#                    <li class="title " data-filter=".drinks"><h4>Drinks</h4></li>#}
-{#                    <li class="title " data-filter="all"><h4>All dishes</h4></li>#}
-{#                </ul>#}
-            </div>
-
-            <nav id="navbar" class="navbar">
-                <ul>
-                    <li><a class="nav-link scrollto" href="#about"></a></li>
-                    <li><a class="nav-link scrollto" href="{{ path('app_menu') }}">Menu Cart</a></li>
-                    <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
-                    <li><a class="nav-link scrollto" href="#team">Team</a></li>
-                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                </ul>
-                <i class="bi bi-list mobile-nav-toggle"></i>
+    <nav id="navbar" class="navbar">
+        <ul>
+            <li><a class="nav-link active" href="{{ path('app_home') }}">Home</a></li>
+            <li><a class="nav-link scrollto menu" href="#appetizer">appetizers</a></li>
+            <li><a class="nav-link scrollto menu" href="#main_dish">main dishes</a></li>
+            <li><a class="nav-link scrollto menu" href="#dessert">desserts</a></li>
+            <li><a class="nav-link scrollto menu" href="#drinks">drinks</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
 
 
-            </nav><!-- .navbar -->
-            <section id="apetizer" class="appetizer">
-            <div class="row">
-                <!-- ======= Appetizer Section ======= -->
+    </nav>
 
-                    {% for dish in dishes %}
-                    {% if dish.category.id is same as(3) %}
-                        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                            <div class="icon" {{ dish.category }}></div>
-                            <h4 class="title"><a href="">{{ dish.name }}  - € {{ dish.price }}</a></h4>
-                            <img src="{{ asset('images/' ~ dish.image) }}" alt="{{ dish.name }}">
-                            <p>OrderNr. {{ dish.id }}</p>
-                            <h5 class="description">{{ dish.description }} </h5>
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Menu Cart</h2>
+            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+                consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia
+                fugiat sit in iste officiis commodi quidem hic quas.</p>
+        </div>
+
+
+
+        <!-- ======= Appetizer Section ======= -->
+        <section id="apetizer" class="team">
+            <div class="row no-gutters">
+                <h2>Appetizers</h2>
+
+                {% for dish in dishes %}
+                    {% if dish.category.id is same as(1) %}
+                        <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+                            <div class="menu-box">
+                                <h4 class="title"><a href="">{{ dish.name }}</a></h4>
+                                <img class="menuImg" src="{{ asset('images/' ~ dish.image) }}" alt="{{ dish.name }}">
+                                <p>OrderNr. {{ dish.id }}</p>
+                                <h6 class="description">{{ dish.description }} </h6>
+                                <h4 class="title"><a href=""> € {{ dish.price }} </a></h4>
+                            </div>
                         </div>
-                    {% endif%}
-                    {% endfor %}
-
-            </div>
-            </section><!-- End About Section -->
-            <div class="row">
-                <!-- ======= Appetizer Section ======= -->
-                <section id="portfolio" class="">
-                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                    {% for dish in dishes %}
-                    {% if dish.category.id is same as(3) %}
-                    {# <div class="icon-box" data-aos="fade-up"> #}
-                    <div class="icon" {{ dish.category }}"
-                </div>
-                <h4 class="title"><a href="">{{ dish.name }}  - € {{ dish.price }}</a></h4>
-                <img src="{{ asset('images/' ~ dish.image) }}" alt="{{ dish.name }}">
-                <p>OrderNr. {{ dish.id }}</p>
-                <h5 class="description">{{ dish.description }} </h5>
-                {% endif%}
+                    {% endif %}
                 {% endfor %}
+
             </div>
-            <div class="row">
-                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                    {% for dish in dishes %}
-                    {% if dish.category.id is same as(3) %}
-                    {# <div class="icon-box" data-aos="fade-up"> #}
-                    <div class="icon" {{ dish.category }}"
-                </div>
-                <h4 class="title"><a href="">{{ dish.name }}  - € {{ dish.price }}</a></h4>
-                <img src="{{ asset('images/' ~ dish.image) }}" alt="{{ dish.name }}">
-                <p>OrderNr. {{ dish.id }}</p>
-                <h5 class="description">{{ dish.description }} </h5>
-                {% endif%}
+        </section><!-- End Appetizer Section -->
+
+        <!-- ======= main_dish Section ======= -->
+        <section id="main_dish" class="team">
+            <div class="row no-gutters">
+                <h2>Main Dishes</h2>
+
+                {% for dish in dishes %}
+                    {% if dish.category.id is same as(2) %}
+                        <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+                            <div class="menu-box">
+                                <h4 class="title"><a href="">{{ dish.name }}</a></h4>
+                                <img class="menuImg" src="{{ asset('images/' ~ dish.image) }}" alt="{{ dish.name }}">
+                                <p>OrderNr. {{ dish.id }}</p>
+                                <h6 class="description">{{ dish.description }} </h6>
+                                <h4 class="title"><a href=""> € {{ dish.price }} </a></h4>
+                            </div>
+                        </div>
+                    {% endif %}
                 {% endfor %}
+
             </div>
-            <div class="row">
-                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                    {% for dish in dishes %}
+        </section><!-- End main_dish Section -->
+
+        <!-- ======= desserts Section ======= -->
+        <section id="dessert" class="team">
+            <div class="row no-gutters">
+                <h2>Desserts</h2>
+
+                {% for dish in dishes %}
                     {% if dish.category.id is same as(3) %}
-                    {# <div class="icon-box" data-aos="fade-up"> #}
-                    <div class="icon" {{ dish.category }}"
-                </div>
-                <h4 class="title"><a href="">{{ dish.name }}  - € {{ dish.price }}</a></h4>
-                <img src="{{ asset('images/' ~ dish.image) }}" alt="{{ dish.name }}">
-                <p>OrderNr. {{ dish.id }}</p>
-                <h5 class="description">{{ dish.description }} </h5>
-                {% endif%}
+                        <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+                            <div class="menu-box">
+                                <h4 class="title"><a href="">{{ dish.name }} </a></h4>
+                                <img class="menuImg" src="{{ asset('images/' ~ dish.image) }}" alt="{{ dish.name }}">
+                                <p>OrderNr. {{ dish.id }}</p>
+                                <h6 class="description">{{ dish.description }} </h6>
+                                <h4 class="title"><a href=""> € {{ dish.price }} </a></h4>
+                            </div>
+                        </div>
+                    {% endif %}
                 {% endfor %}
+
             </div>
+        </section><!-- End dessert Section -->
 
-        </div>
+        <!-- ======= desserts Section ======= -->
+        <section id="drinks" class="team">
+            <div class="row no-gutters">
+                <h2>Drinks</h2>
 
-        </div>
+                {% for dish in dishes %}
+                    {% if dish.category.id is same as(4) %}
+                        <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
+                            <div class="menu-box">
+                                <h4 class="title"><a href="">{{ dish.name }} </a></h4>
+                                <img class="menuImg" src="{{ asset('images/' ~ dish.image) }}" alt="{{ dish.name }}">
+                                <p>OrderNr. {{ dish.id }}</p>
+                                <h6 class="description">{{ dish.description }} </h6>
+                                <h4 class="title"><a href=""> € {{ dish.price }} </a></h4>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
 
-        </div>
-    </section><!-- End Services Section -->
+            </div>
+        </section><!-- End drinks Section -->
+
+
+
+
+    </div>
+
+
+
+
+
 {% endblock %}
